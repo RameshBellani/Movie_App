@@ -1,0 +1,77 @@
+.navbar {
+  background-color: #333;
+  padding: 12px;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+.header-list {
+  list-style-type: none;
+  display: flex;
+  text-decoration: none;
+  justify-content: space-between;
+  margin-right: 10px;
+}
+.header-list-item {
+  padding: 8px;
+  text-decoration: none;
+  color: #fff;
+}
+.heading-container {
+  display: flex;
+}
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.routes-div {
+  display: flex;
+  align-items: center;
+}
+.logo {
+  height: 80px;
+  width: 80px;
+}
+
+.search-container {
+  float: right;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-bar {
+  margin: 8px;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  background-color: black;
+  font-size: 16px;
+}
+
+.search-button {
+  padding: 8px;
+  margin: 8px;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.button {
+  padding: 6px;
+  width: 80px;
+  height: 30px;
+  align-self: center;
+  color: #fff;
+  background: linear-gradient(orange, skyblue);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+* {
+  box-sizing: border-box;
+}

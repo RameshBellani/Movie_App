@@ -1,0 +1,45 @@
+.upcoming-container {
+  background-color: black;
+  margin: 0;
+  padding: 20px;
+}
+.up-movies-container {
+  list-style-type: none;
+  display: flex;
+
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.up-Movie-Heading {
+  color: #fff;
+  font-family: "Roboto";
+}
+.image-up {
+  height: 200px;
+  width: 200px;
+  border-radius: 10px;
+}
+
+.up-card {
+  margin: 20px;
+  border-radius: 10px;
+  width: 200px;
+  background-color: #333f;
+}
+.up-info {
+  display: flex;
+  color: #fff;
+  font-family: sans-serif;
+  text-align: center;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+body {
+  margin: 0;
+}
+
+.details-up-btn {
+  align-self: center;
+  margin-bottom: 4px;
+}

@@ -1,0 +1,54 @@
+.query-container {
+  background-color: black;
+  margin: 0;
+  padding: 20px;
+}
+
+.movie-query {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.query-image {
+  height: 200px;
+  width: 200px;
+  border-radius: 10px;
+}
+
+.query-card {
+  margin: 20px;
+  border-radius: 10px;
+  width: 200px;
+  background-color: #333f;
+}
+
+.query-info {
+  display: flex;
+  color: #fff;
+  font-family: sans-serif;
+  text-align: center;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body {
+  margin: 0;
+}
+
+.details-home-btn {
+  width: 90px;
+  color: #fff;
+  border: 0;
+  font-family: sans-serif;
+  font-weight: 400;
+  height: 35px;
+  border-radius: 16px;
+  background-image: linear-gradient(
+    rgb(224, 230, 216),
+    rgb(94, 94, 201),
+    rgb(185, 83, 83)
+  );
+}

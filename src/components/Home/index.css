@@ -1,0 +1,47 @@
+.home-container {
+  background-color: black;
+  margin: 0;
+  padding: 20px;
+}
+
+.home-movies-container {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.home-Movie-Heading {
+  color: #fff;
+  font-family: 'Roboto';
+}
+
+.image-home {
+  height: 200px;
+  width: 200px;
+  border-radius: 10px;
+}
+
+.movie-card {
+  margin: 20px;
+  border-radius: 10px;
+  width: 200px;
+  background-color: #333f;
+}
+.movie-info {
+  display: flex;
+  color: #fff;
+  font-family: sans-serif;
+  text-align: center;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+body {
+  margin: 0;
+}
+
+.details-home-btn {
+  align-self: center;
+  margin-bottom: 4px;
+}

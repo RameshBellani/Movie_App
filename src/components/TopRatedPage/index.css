@@ -1,0 +1,38 @@
+.rated-container {
+  background-color: black;
+  margin: 0;
+  padding: 20px;
+}
+.rated-movie-container {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.rated-Movie-Heading {
+  color: #fff;
+  font-family: 'Roboto';
+}
+.image-rated {
+  height: 200px;
+  width: 200px;
+  border-radius: 10px;
+}
+.rated-card {
+  margin: 20px;
+  border-radius: 10px;
+  width: 200px;
+  background-color: #333f;
+}
+.rated-info {
+  display: flex;
+  color: #fff;
+  font-family: sans-serif;
+  text-align: center;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+body {
+  margin: 0;
+}
