@@ -1,13 +1,16 @@
-import {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
+import Pagination from '../Pagination' // Import the Pagination component
 import './index.css'
 
 const TopRatedPage = () => {
   const [movies, setMovies] = useState([])
+  const [totalPages, setTotalPages] = useState(0) // State to store total pages
+  const [currentPage, setCurrentPage] = useState(1) // State to store current page
 
-  useEffect(() => {
+  const fetchTopRatedMovies = () => {
     const apiKey = '7bf2722327527dfd838d3972adf60e74'
-    const apiUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`
+    const apiUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=${currentPage}`
 
     fetch(apiUrl)
       .then(response => {
@@ -18,11 +21,20 @@ const TopRatedPage = () => {
       })
       .then(data => {
         setMovies(data.results)
+        setTotalPages(data.total_pages) // Set total pages from the API response
       })
       .catch(error => {
         console.error('Error fetching top-rated movies:', error)
       })
-  }, [])
+  }
+
+  useEffect(() => {
+    fetchTopRatedMovies()
+  }, [currentPage])
+
+  const handlePageChange = page => {
+    setCurrentPage(page) // Update the current page
+  }
 
   return (
     <div className="rated-container">
@@ -47,6 +59,11 @@ const TopRatedPage = () => {
           </li>
         ))}
       </ul>
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
     </div>
   )
 }

@@ -1,13 +1,16 @@
 import {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
+import Pagination from '../Pagination'
 import './index.css'
 
 const UpcomingPage = () => {
   const [movies, setMovies] = useState([])
+  const [totalPages, setTotalPages] = useState(0)
+  const [currentPage, setCurrentPage] = useState(1)
 
-  useEffect(() => {
+  const fetchUpcomingMovies = () => {
     const apiKey = '7bf2722327527dfd838d3972adf60e74'
-    const apiUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=1`
+    const apiUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=${currentPage}`
 
     fetch(apiUrl)
       .then(response => {
@@ -18,11 +21,20 @@ const UpcomingPage = () => {
       })
       .then(data => {
         setMovies(data.results)
+        setTotalPages(data.total_pages)
       })
       .catch(error => {
         console.error('Error fetching upcoming movies:', error)
       })
-  }, [])
+  }
+
+  useEffect(() => {
+    fetchUpcomingMovies()
+  }, [currentPage])
+
+  const handlePageChange = page => {
+    setCurrentPage(page)
+  }
 
   return (
     <div className="upcoming-container">
@@ -47,6 +59,11 @@ const UpcomingPage = () => {
           </li>
         ))}
       </ul>
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
     </div>
   )
 }

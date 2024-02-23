@@ -1,20 +1,41 @@
-import {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useParams, Link} from 'react-router-dom'
+import Pagination from '../Pagination' // Import the Pagination component
 import './index.css'
 
 const SearchedMoviesPage = () => {
   const {query} = useParams()
   const [searchResults, setSearchResults] = useState([])
+  const [totalPages, setTotalPages] = useState(0) // State to store total pages
+  const [currentPage, setCurrentPage] = useState(1) // State to store current page
 
-  useEffect(() => {
+  const fetchSearchResults = () => {
     const apiKey = '7bf2722327527dfd838d3972adf60e74'
-    const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${query}&page=1`
+    const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${query}&page=${currentPage}`
 
     fetch(apiUrl)
-      .then(response => response.json())
-      .then(data => setSearchResults(data.results))
-      .catch(error => console.error('Error fetching searched movies:', error))
-  }, [query])
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok')
+        }
+        return response.json()
+      })
+      .then(data => {
+        setSearchResults(data.results)
+        setTotalPages(data.total_pages) // Set total pages from the API response
+      })
+      .catch(error => {
+        console.error('Error fetching searched movies:', error)
+      })
+  }
+
+  useEffect(() => {
+    fetchSearchResults()
+  }, [query, currentPage])
+
+  const handlePageChange = page => {
+    setCurrentPage(page) // Update the current page
+  }
 
   return (
     <div className="query-container">
@@ -39,6 +60,11 @@ const SearchedMoviesPage = () => {
           </div>
         ))}
       </div>
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
     </div>
   )
 }
